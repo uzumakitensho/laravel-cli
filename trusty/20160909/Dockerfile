@@ -1,4 +1,4 @@
-FROM ubuntu:xenial-20160818
+FROM dockerkit/ubuntu:trusty-20160909
 
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
@@ -8,14 +8,26 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get install --no-install-recommends -yq \
        vim \
        git \
-       php-cli \
-       php-json \
-       php-intl \
-       php-mcrypt \
-       php-curl \
-       php-mysql \
-       php-sqlite3 \
-       php-pgsql \
+       php5-cli \
+       php5-curl \
+       php5-intl \
+       php5-json \
+       php5-mcrypt \
+       php5-mysqlnd \
+       php5-pgsql \
+       php5-readline \
+       php5-sqlite \
+       php5-xsl \
+    && php5enmod \
+       curl \
+       intl \
+       json \
+       mcrypt \
+       mysqlnd \
+       pgsql \
+       readline \
+       sqlite \
+       xsl \ 
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
